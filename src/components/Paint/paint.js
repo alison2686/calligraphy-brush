@@ -126,7 +126,7 @@ const useHistory = (initialState) => {
 function Paint() {
     const [elements, setElements, undo, redo] = useHistory([])
     const [action, setAction] = useState('none')
-    const [tool, setTool] = useState('line')
+    const [tool, setTool] = useState('pencil')
     const [selectedElement, setSelectedElement] = useState(null)
 
     useLayoutEffect( () => {
@@ -264,8 +264,15 @@ function Paint() {
                     onChange={() => setTool('rectangle')}
                 />
                 <label htmlFor='rectangle'>Rectangle</label>
+                <input 
+                    type='radio'
+                    id='pencil'
+                    checked={tool === 'pencil'}
+                    onChange={() => setTool('pencil')}
+                />
+                <label htmlFor='pencil'>Freehand</label>
             </div>
-            <div style={{ position: 'fixed', bottom: 0, padding: 18}}>
+            <div className='undo-btn'style={{ position: 'fixed', bottom: 0, padding: 18}}>
                 <button onClick={undo}>Undo</button>
                 <button onClick={redo}>Redo</button>
             </div>
