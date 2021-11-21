@@ -25,7 +25,7 @@ const HeroSection = () => {
     let navigate = useNavigate();
 
     function handleClick() {
-        navigate('/openApp')
+        navigate('/paint-app')
     }
  
     return (

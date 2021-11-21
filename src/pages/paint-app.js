@@ -1,7 +1,7 @@
 import React from 'react'
 import Paint from '../components/Paint/paint'
 
-const OpenApp = () => {
+const PaintApp = () => {
     return (
         <div>
             <Paint />
@@ -9,4 +9,4 @@ const OpenApp = () => {
     )
 }
 
-export default OpenApp
+export default PaintApp
