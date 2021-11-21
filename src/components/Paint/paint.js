@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { useEffect } from 'react/cjs/react.development'
 import rough from 'roughjs/bundled/rough.esm'
+import ColorPicker from '../ColorPicker/ColorPicker'
 
 
 const generator = rough.generator()
@@ -267,6 +268,9 @@ function Paint() {
             <div style={{ position: 'fixed', bottom: 0, padding: 18}}>
                 <button onClick={undo}>Undo</button>
                 <button onClick={redo}>Redo</button>
+            </div>
+            <div className='color-picker' style={{ position: 'fixed', top: 0, padding: 50}}>
+                <ColorPicker />
             </div>
             <canvas 
                 id='canvas'
