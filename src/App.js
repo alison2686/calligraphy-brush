@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
+import { useEffect } from 'react/cjs/react.development'
 import rough from 'roughjs/bundled/rough.esm'
 
 
@@ -98,8 +99,31 @@ const resizedCoords = (clientX, clientY, position, coords) => {
   }
 }
 
+const useHistory = (initialState) => {
+    const [index, setIndex] = useState(0)
+    const [history, setHistory] = useState([initialState])
+
+    const setState = (action, overwrite = false) => {
+        const newState = typeof action === 'function' ? action(history[index]) : action
+        if (overwrite) {
+            const historyCopy = [...history];
+            historyCopy[index] = newState;
+            setHistory(historyCopy);
+          } else {
+            const updatedState = [...history].slice(0, index + 1);
+            setHistory([...updatedState, newState]);
+            setIndex(prevState => prevState + 1);
+          }
+    }
+
+    const undo = () => index > 0 && setIndex(prevState => prevState - 1);
+    const redo = () => index < history.length - 1 && setIndex(prevState => prevState + 1);
+
+    return [history[index], setState, undo, redo]
+}
+
 function App() {
-    const [elements, setElements] = useState([])
+    const [elements, setElements, undo, redo] = useHistory([])
     const [action, setAction] = useState('none')
     const [tool, setTool] = useState('line')
     const [selectedElement, setSelectedElement] = useState(null)
@@ -120,13 +144,30 @@ function App() {
 
     }, [elements])
 
+    useEffect(() => {
+        const undoRedoFunction = event => {
+          if ((event.metaKey || event.ctrlKey) && event.key === "z") {
+            if (event.shiftKey) {
+              redo()
+            } else {
+              undo()
+            }
+          }
+        };
+    
+        document.addEventListener('keydown', undoRedoFunction);
+        return () => {
+          document.removeEventListener('keydown', undoRedoFunction);
+        };
+      }, [undo, redo]);
+
     const updateElement = (id, x1, y1, x2, y2, type) => {
         const updatedElement = createElement(id, x1, y1, x2, y2, type)
 
         const elementsCopy = [...elements]
             
         elementsCopy[id] = updatedElement
-        setElements(elementsCopy)
+        setElements(elementsCopy, true)
     }
 
     const handleMouseDown = (event) => {
@@ -139,6 +180,7 @@ function App() {
                 const offsetX = clientX - element.x1
                 const offsetY = clientY - element.y1
                 setSelectedElement({...element, offsetX, offsetY})
+                setElements(prevState => prevState)
 
                 if (element.position === "inside") {
                     setAction("moving");
@@ -185,11 +227,13 @@ function App() {
         }
     }
     const handleMouseUp = () => {
+        if(selectedElement) {
         const index = selectedElement.id
         const { id, type } = elements[index]
         if(action === 'painting' || action === 'resizing') {
             const {x1, y1, x2, y2} = adjustElementCoords(elements[index])
             updateElement(id, x1, y1, x2, y2, type)          
+            }
         }
         setAction('none')
         setSelectedElement(null)
@@ -219,6 +263,10 @@ function App() {
                     onChange={() => setTool('rectangle')}
                 />
                 <label htmlFor='rectangle'>Rectangle</label>
+            </div>
+            <div style={{ position: 'fixed', bottom: 0, padding: 18}}>
+                <button onClick={undo}>Undo</button>
+                <button onClick={redo}>Redo</button>
             </div>
             <canvas 
                 id='canvas'
