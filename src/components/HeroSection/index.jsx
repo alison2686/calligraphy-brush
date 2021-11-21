@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Video from '../../videos/video4.mp4'
+import Video from '../../video/video7.mp4'
 import {Button} from '../ButtonElement'
 import { 
     HeroContainer, 
@@ -12,12 +12,20 @@ import {
     ArrowForward, 
     ArrowRight 
 } from './HeroElements'
+import {useNavigate} from 'react-router-dom';
+
 
 const HeroSection = () => {
     const [hover, setHover] = useState(false)
 
     const onHover = () => {
         setHover(!hover)
+    }
+
+    let navigate = useNavigate();
+
+    function handleClick() {
+        navigate('/openApp')
     }
  
     return (
@@ -26,13 +34,13 @@ const HeroSection = () => {
                 <VideoBg autoPlay loop muted src={Video} type='video4/mp4' />
             </HeroBg>
             <HeroContent>
-                <HeroH1>Looking for a reason to get away?</HeroH1>
+                <HeroH1>Paint App</HeroH1>
                 <HeroP>
-                Stop looking and just book it!
+                Start Painting!
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button 
-                        onClick={event => window.location.href='https://apps.itams.com/TASLive/customer/register?id=0x00d5a26df3a6ab468d3b11145121e520010000000ab765624c1bd406a5ba080d3b4b3f2e871bad6ebd20f05036e8e520e1b5cdf7'}
+                        onClick={handleClick}
                         onMouseEnter={onHover}
                         onMouseLeave={onHover}
                         primary='true'
@@ -43,8 +51,9 @@ const HeroSection = () => {
                         exact='true' 
                         offset={-80}    
                     >
-                        Get Started {hover ? <ArrowForward /> : <ArrowRight />}
+                        Continue to the App {hover ? <ArrowForward /> : <ArrowRight />}
                     </Button>
+                    
                 </HeroBtnWrapper>
             </HeroContent>
         </HeroContainer>
