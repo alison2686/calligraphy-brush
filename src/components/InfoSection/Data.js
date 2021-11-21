@@ -59,7 +59,7 @@ export const homeObjFour = {
     description: 'I inherited a taste for travel and adventure from my mom at a very young age. We spent a year abroad when I was 5 years old so she could pursue her studies, and being an American kindergartener at a French school in Montpellier completely changed my life! I learned the value of being multilingual and came to appreciate exploring new landscapes, cultures and cuisines as if they were in my own backyard, my own neighborhood and family. Later on, after choosing Linguistics as my course of study in college and graduate school, I took the opportunity to live in Japan and travel throughout Asia and Eastern Europe. To date, I have visited 20 countries and still hope to visit many more.',
     buttonLabel: 'Book a consultation',
     imgStart: true,
-    img: require('../../images/elana_bio_pic.jpg'),
+    // img: require('../../images/elana_bio_pic.jpg'),
     alt: 'Partner',
     dark: true,
     primary: true,

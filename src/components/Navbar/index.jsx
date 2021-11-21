@@ -15,7 +15,7 @@ import {
     ImgWrap,
     Img
 } from './NavbarElements'
-import logo from '../../images/elan_logo_black_whitebackground.png';
+// import logo from '../../images/elan_logo_black_whitebackground.png';
 
 const Navbar = ({ toggle }) => {
 const [scrollNav, setScrollNav] = useState(false)
@@ -42,12 +42,11 @@ const changeNav = () => {
             <Nav scrollNav={scrollNav}>
                 <NavbarContainer>
                 {/* <img src={logo} alt='Elan Travel Services'/> */}
-                    <NavLogo to="/" onClick={toggleHome}>
-                        {/* <h1>elan travel</h1>    */}
+                    {/* <NavLogo to="/" onClick={toggleHome}>
                         <ImgWrap>
                             <Img src={logo} alt='Elan Travel Services'/>
                         </ImgWrap>
-                    </NavLogo>
+                    </NavLogo> */}
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>

@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { useEffect } from 'react/cjs/react.development'
 import rough from 'roughjs/bundled/rough.esm'
+import Home from './pages/index'
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 const generator = rough.generator()
@@ -241,6 +243,7 @@ function App() {
     
     return (
         <div>
+            <Home />
             <div style={{ position: 'fixed'}}>
                 <input 
                     type='radio'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 import InfoSection from '../components/InfoSection'
 import { 
@@ -9,8 +9,8 @@ import {
     homeObjFour
 } from '../components/InfoSection/Data'
 import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
-import Services from '../components/TravelServices'
+// import Sidebar from '../components/Sidebar'
+// import Services from '../components/TravelServices'
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -21,15 +21,15 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <Sidebar isOpen={isOpen} toggle={toggle} />
+            {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
             <Navbar toggle={toggle}/>
             <HeroSection />
             <InfoSection {...homeObjOne} />
             <InfoSection {...homeObjTwo} />
-            <Services />
+            {/* <Services /> */}
             <InfoSection {...homeObjThree} />
             <InfoSection {...homeObjFour} />
-            <Footer />
+            {/* <Footer /> */}
         </React.Fragment>
     )
 }
