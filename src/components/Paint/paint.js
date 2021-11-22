@@ -14,14 +14,14 @@ function createElement(id, x1, y1, x2, y2, type) {
           const roughElement =
             type === 'line'
               ? generator.line(x1, y1, x2, y2)
-              : generator.rectangle(x1, y1, x2 - x1, y2 - y1);
-          return { id, x1, y1, x2, y2, type, roughElement };
+              : generator.rectangle(x1, y1, x2 - x1, y2 - y1)
+          return { id, x1, y1, x2, y2, type, roughElement }
         case 'pencil':
-          return { id, type, points: [{ x: x1, y: y1 }] };
+          return { id, type, points: [{ x: x1, y: y1 }] }
         case 'text':
-          return { id, type, x1, y1, x2, y2, text: '' };
+          return { id, type, x1, y1, x2, y2, text: '' }
         default:
-          throw new Error(`Type not recognised: ${type}`);
+          throw new Error(`Type not recognised: ${type}`)
       }
 }
 
@@ -38,10 +38,10 @@ const onLine = (x1, y1, x2, y2, x, y, elementDistance = 1) => {
   }
 
 const positionWithinElement = (x, y, element) => {
-    const { type, x1, x2, y1, y2 } = element;
+    const { type, x1, x2, y1, y2 } = element
     switch (type) {
       case 'line':
-        const on = onLine(x1, y1, x2, y2, x, y);
+        const on = onLine(x1, y1, x2, y2, x, y)
         const start = nearPoint(x, y, x1, y1, 'start')
         const end = nearPoint(x, y, x2, y2, 'end')
         return start || end || on
@@ -54,8 +54,8 @@ const positionWithinElement = (x, y, element) => {
         return topLeft || topRight || bottomLeft || bottomRight || inside
       case 'pencil':
         const betweenAnyPoint = element.points.some((point, index) => {
-          const nextPoint = element.points[index + 1];
-          if (!nextPoint) return false;
+          const nextPoint = element.points[index + 1]
+          if (!nextPoint) return false
           return onLine(point.x, point.y, nextPoint.x, nextPoint.y, x, y, 5) != null
         })
         return betweenAnyPoint ? 'inside' : null
@@ -66,12 +66,12 @@ const positionWithinElement = (x, y, element) => {
     }
   }
 
-const distance = (a, b) => Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+const distance = (a, b) => Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2))
 
 const getElementAtPosition = (x, y, elements) => {
     return elements
         .map(element => ({ ...element, position: positionWithinElement(x, y, element) }))
-        .find(element => element.position !== null);
+        .find(element => element.position !== null)
 }
 
 const adjustElementCoords = element => {
@@ -97,32 +97,33 @@ const cursorForPosition = position => {
         case 'br':
         case 'start':
         case 'end':
-          return 'nwse-resize';
+          return 'nwse-resize'
         case 'tr':
         case 'bl':
-          return 'nesw-resize';
+          return 'nesw-resize'
         default:
-          return 'move';
+          return 'move'
       }
 }
 
 const resizedCoords = (clientX, clientY, position, coords) => {
-    const { x1, y1, x2, y2 } = coords;
+    const { x1, y1, x2, y2 } = coords
   switch (position) {
     case 'tl':
     case 'start':
-      return { x1: clientX, y1: clientY, x2, y2 };
+      return { x1: clientX, y1: clientY, x2, y2 }
     case 'tr':
-      return { x1, y1: clientY, x2: clientX, y2 };
+      return { x1, y1: clientY, x2: clientX, y2 }
     case 'bl':
-      return { x1: clientX, y1, x2, y2: clientY };
+      return { x1: clientX, y1, x2, y2: clientY }
     case 'br':
     case 'end':
-      return { x1, y1, x2: clientX, y2: clientY };
+      return { x1, y1, x2: clientX, y2: clientY }
     default:
-      return null; //should not really get here...
+      return null //should not really get here...
   }
 }
+
 
 const useHistory = (initialState) => {
     const [index, setIndex] = useState(0)
@@ -131,18 +132,18 @@ const useHistory = (initialState) => {
     const setState = (action, overwrite = false) => {
         const newState = typeof action === 'function' ? action(history[index]) : action
         if (overwrite) {
-            const historyCopy = [...history];
-            historyCopy[index] = newState;
-            setHistory(historyCopy);
+            const historyCopy = [...history]
+            historyCopy[index] = newState
+            setHistory(historyCopy)
           } else {
-            const updatedState = [...history].slice(0, index + 1);
-            setHistory([...updatedState, newState]);
-            setIndex(prevState => prevState + 1);
+            const updatedState = [...history].slice(0, index + 1)
+            setHistory([...updatedState, newState])
+            setIndex(prevState => prevState + 1)
           }
     }
 
-    const undo = () => index > 0 && setIndex(prevState => prevState - 1);
-    const redo = () => index < history.length - 1 && setIndex(prevState => prevState + 1);
+    const undo = () => index > 0 && setIndex(prevState => prevState - 1)
+    const redo = () => index < history.length - 1 && setIndex(prevState => prevState + 1)
 
     return [history[index], setState, undo, redo]
 }
@@ -167,21 +168,21 @@ const drawElement = (roughCanvas, context, element) => {
     switch (element.type) {
         case 'line':
         case 'rectangle':
-          roughCanvas.draw(element.roughElement);
-          break;
+          roughCanvas.draw(element.roughElement)
+          break
         case 'pencil':
           const stroke = getSvgPathFromStroke(getStroke(element.points, {
               size: 50,
-          }));
-          context.fill(new Path2D(stroke));
-          break;
+          }))
+          context.fill(new Path2D(stroke))
+          break
         case 'text':
-          context.textBaseline = 'top';
-          context.font = '24px sans-serif';
-          context.fillText(element.text, element.x1, element.y1);
-          break;
+          context.textBaseline = 'top'
+          context.font = '24px sans-serif'
+          context.fillText(element.text, element.x1, element.y1)
+          break
         default:
-          throw new Error(`Type not recognised: ${element.type}`);
+          throw new Error(`Type not recognised: ${element.type}`)
       }
 }
 
@@ -220,99 +221,117 @@ function Paint() {
               undo()
             }
           }
-        };
+        }
     
-        document.addEventListener('keydown', undoRedoFunction);
+        document.addEventListener('keydown', undoRedoFunction)
         return () => {
-          document.removeEventListener('keydown', undoRedoFunction);
-        };
-      }, [undo, redo]);
+          document.removeEventListener('keydown', undoRedoFunction)
+        }
+      }, [undo, redo])
 
   const updateElement = (id, x1, y1, x2, y2, type, options) => {
-    const elementsCopy = [...elements];
+    const elementsCopy = [...elements]
 
     switch (type) {
       case 'line':
       case 'rectangle':
-        elementsCopy[id] = createElement(id, x1, y1, x2, y2, type);
-        break;
+        elementsCopy[id] = createElement(id, x1, y1, x2, y2, type)
+        break
       case 'pencil':
-        elementsCopy[id].points = [...elementsCopy[id].points, { x: x2, y: y2 }];
-        break;
+        elementsCopy[id].points = [...elementsCopy[id].points, { x: x2, y: y2 }]
+        break
       case 'text':
         const textWidth = document
           .getElementById('canvas')
           .getContext('2d')
-          .measureText(options.text).width;
-        const textHeight = 24;
+          .measureText(options.text).width
+        const textHeight = 24
         elementsCopy[id] = {
           ...createElement(id, x1, y1, x1 + textWidth, y1 + textHeight, type),
           text: options.text,
-        };
-        break;
+        }
+        break
       default:
-        throw new Error(`Type not recognised: ${type}`);
+        throw new Error(`Type not recognised: ${type}`)
     }
 
-    setElements(elementsCopy, true);
+    setElements(elementsCopy, true)
   }
 
-    const handleMouseDown = (event) => {
-        const { clientX, clientY } = event
-        if(tool === 'selection') {
-            // if we are on an element
-            const element = getElementAtPosition(clientX, clientY, elements)
-            //setAction to moving
-            if(element) {
-                const offsetX = clientX - element.x1
-                const offsetY = clientY - element.y1
-                setSelectedElement({...element, offsetX, offsetY})
-                setElements(prevState => prevState)
+  const handleMouseDown = event => {
+    if (action === 'writing') return
 
-                if (element.position === 'inside') {
-                    setAction('moving');
-                  } else {
-                    setAction('resizing');
-                  }
-            }
+    const { clientX, clientY } = event
+    if (tool === 'selection') {
+      const element = getElementAtPosition(clientX, clientY, elements)
+      if (element) {
+        if (element.type === 'pencil') {
+          const xOffsets = element.points.map(point => clientX - point.x)
+          const yOffsets = element.points.map(point => clientY - point.y)
+          setSelectedElement({ ...element, xOffsets, yOffsets })
         } else {
-            const id = elements.length
-            const element = createElement(id, clientX, clientY, clientX, clientY, tool)
-            setElements(prevState => [...prevState, element])
-            setSelectedElement(element)
-
-            setAction('painting')
+          const offsetX = clientX - element.x1
+          const offsetY = clientY - element.y1
+          setSelectedElement({ ...element, offsetX, offsetY })
         }
-    };
+        setElements(prevState => prevState)
 
-    const handleMouseMove = (event) => {
-        const { clientX, clientY } = event
-
-        if(tool === 'selection') {
-            const element = getElementAtPosition(clientX, clientY, elements)
-            event.target.style.cursor = element
-             ? cursorForPosition(element.position) 
-             : 'default'
+        if (element.position === 'inside') {
+          setAction('moving')
+        } else {
+          setAction('resizing')
         }
+      }
+    } else {
+      const id = elements.length
+      const element = createElement(id, clientX, clientY, clientX, clientY, tool)
+      setElements(prevState => [...prevState, element])
+      setSelectedElement(element)
 
-        if(action === 'painting'){
-            const index = elements.length - 1
-            const { x1, y1 } = elements[index]
-            updateElement(index, x1, y1, clientX, clientY, tool)
-            // console.log(clientX, clientY)
-        }else if (action === 'moving') {
-            const {id, x1, x2, y1, y2, type, offsetX, offsetY } = selectedElement
-            const width = x2 - x1
-            const height = y2 - y1
-            const newX1 = clientX - offsetX
-            const newY1 = clientY - offsetY
-            updateElement(id, newX1, newY1, newX1 + width, newY1 + height, type)
-        } else if (action === 'resizing') {
-            const {id, type, position, ...coords } = selectedElement
-            const {x1, y1, x2, y2} = resizedCoords(clientX, clientY, position, coords)
-            updateElement(id, x1, y1, x2, y2, type)  
-        }
+      setAction(tool === 'text' ? 'writing' : 'painting')
     }
+  }
+
+  const handleMouseMove = event => {
+    const { clientX, clientY } = event
+
+    if (tool === 'selection') {
+      const element = getElementAtPosition(clientX, clientY, elements)
+      event.target.style.cursor = element ? cursorForPosition(element.position) : 'default'
+    }
+
+    if (action === 'painting') {
+      const index = elements.length - 1
+      const { x1, y1 } = elements[index]
+      updateElement(index, x1, y1, clientX, clientY, tool)
+    } else if (action === 'moving') {
+      if (selectedElement.type === 'pencil') {
+        const newPoints = selectedElement.points.map((_, index) => ({
+          x: clientX - selectedElement.xOffsets[index],
+          y: clientY - selectedElement.yOffsets[index],
+        }))
+        const elementsCopy = [...elements]
+        elementsCopy[selectedElement.id] = {
+          ...elementsCopy[selectedElement.id],
+          points: newPoints,
+        }
+        setElements(elementsCopy, true)
+      } else {
+        const { id, x1, x2, y1, y2, type, offsetX, offsetY } = selectedElement
+        const width = x2 - x1
+        const height = y2 - y1
+        const newX1 = clientX - offsetX
+        const newY1 = clientY - offsetY
+        const options = type === 'text' ? { text: selectedElement.text } : {}
+        updateElement(id, newX1, newY1, newX1 + width, newY1 + height, type, options)
+      }
+    } else if (action === 'resizing') {
+      const { id, type, position, ...coordinates } = selectedElement
+      const { x1, y1, x2, y2 } = resizedCoords(clientX, clientY, position, coordinates)
+      updateElement(id, x1, y1, x2, y2, type)
+    }
+  }
+
     const handleMouseUp = () => {
         if(selectedElement) {
         const index = selectedElement.id
