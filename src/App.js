@@ -1,7 +1,7 @@
 import React from 'react'
 // import Paint from './components/Paint/paint'
 import Home from './pages/index'
-import PaintApp from './pages/paint-app';
+import PaintApp from './pages/paint';
 import {
     BrowserRouter,
     Routes,
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/paint-app' element={<PaintApp />} />
+                <Route path='/paint' element={<PaintApp />} />
             </Routes>
         </BrowserRouter>
     )
