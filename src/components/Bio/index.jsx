@@ -1,42 +1,33 @@
 import React from 'react'
-import Icon1 from '../../images/svg-7.svg'
-import Icon2 from '../../images/svg-8.svg'
-import Icon3 from '../../images/svg-2.svg'
+// import Icon1 from '../../images/bridge.svg'
+import Icon2 from '../../images/bio.jpg'
+// import Icon3 from '../../images/svg-2.svg'
 import { 
-    ServicesContainer, 
-    ServicesH1, 
-    ServicesWrapper, 
-    ServicesCard, 
-    ServicesIcon, 
-    ServicesH2, 
-    ServicesP } from './Bio'
+    BioContainer, 
+    BioH1, 
+    BioWrapper, 
+    BioCard, 
+    BioIcon, 
+    BioH2,
+    BioH3, 
+    BioP } from './Bio'
 
 const Bio = () => {
     return (
-        <ServicesContainer id='services'>
-            <ServicesH1>
-                Our Services
-            </ServicesH1>
-            <ServicesWrapper>
-                <ServicesCard>
-                    <ServicesIcon src={Icon1}/>
-                    <ServicesH2>Corprorate travel</ServicesH2>
-                    <ServicesP>Book a business trip or corporate retreat</ServicesP>
-                </ServicesCard>
-                <ServicesCard>
-                    <ServicesIcon src={Icon2}/>
-                    <ServicesH2>Road trips</ServicesH2>
-                    <ServicesP> Plan your next road trip, hike or camping excursion
-                    </ServicesP>
-                </ServicesCard>
-                <ServicesCard>
-                    <ServicesIcon src={Icon3}/>
-                    <ServicesH2>Leisure getaways</ServicesH2>
-                    <ServicesP> Finding those hidden gems is such a wonderful feeling
-                    </ServicesP>
-                </ServicesCard>
-            </ServicesWrapper>
-        </ServicesContainer>
+        <BioContainer id='services'>
+            <BioH1>
+                Hi! I'm Alison.
+            </BioH1>
+            <BioWrapper>
+                <BioCard>
+                    <BioIcon src={Icon2}/>
+                    <BioH2>Front End Developer</BioH2>
+                    <BioH3>San Francisco, CA</BioH3>
+                    <BioP> Check out my GitHub Profile or Find Me on LinkedIn
+                    </BioP>
+                </BioCard>
+            </BioWrapper>
+        </BioContainer>
     )
 }
 

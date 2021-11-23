@@ -34,9 +34,9 @@ const HeroSection = () => {
                 <VideoBg autoPlay loop muted src={Video} type='video4/mp4' />
             </HeroBg>
             <HeroContent>
-                <HeroH1>Paint App</HeroH1>
+                <HeroH1>Calligraphy Brush</HeroH1>
                 <HeroP>
-                Start Painting!
+                Digital ink brush for calligraphy, lettering and more!
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button 
@@ -51,7 +51,7 @@ const HeroSection = () => {
                         exact='true' 
                         offset={-80}    
                     >
-                        Continue to the App {hover ? <ArrowForward /> : <ArrowRight />}
+                        Continue to Calligraphy Brush {hover ? <ArrowForward /> : <ArrowRight />}
                     </Button>
                     
                 </HeroBtnWrapper>

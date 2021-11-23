@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ServicesContainer = styled.div`
+export const BioContainer = styled.div`
     height: 800px;
     display: flex;
     flex-direction: column;
@@ -17,11 +17,11 @@ export const ServicesContainer = styled.div`
     }
 `;
 
-export const ServicesWrapper = styled.div`
+export const BioWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
     align-items: center;
     grid-gap: 16px;
     padding: 0 50px;
@@ -36,7 +36,7 @@ export const ServicesWrapper = styled.div`
     }
 `;
 
-export const ServicesCard = styled.div`
+export const BioCard = styled.div`
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -55,13 +55,13 @@ export const ServicesCard = styled.div`
     }
 `;
 
-export const ServicesIcon = styled.img`
+export const BioIcon = styled.img`
     height: 160px;
     width: 160px;
     margin-bottom: 10px;
 `
 
-export const ServicesH1 = styled.h1`
+export const BioH1 = styled.h1`
     font-size: 2.5rem;
     color: #fff;
     margin-bottom: 64px;
@@ -71,13 +71,19 @@ export const ServicesH1 = styled.h1`
     }
 `;
 
-export const ServicesH2 = styled.h2`
+export const BioH2 = styled.h2`
     font-size: 1rem;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 `
 
-export const ServicesP = styled.p`
+export const BioH3 = styled.h2`
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    /* text-transform: uppercase; */
+`
+
+export const BioP = styled.p`
     font-size: 1 rem;
     text-align: center;
 `

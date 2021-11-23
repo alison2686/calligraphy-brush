@@ -7,7 +7,6 @@ import getStroke from 'perfect-freehand'
 const generator = rough.generator()
 
 function createElement(id, x1, y1, x2, y2, type) {
-    // const roughElement = generator.line(x1, y1, x2, y2)
     switch (type) {
         case 'line':
         case 'rectangle':
@@ -120,7 +119,7 @@ const resizedCoords = (clientX, clientY, position, coords) => {
     case 'end':
       return { x1, y1, x2: clientX, y2: clientY }
     default:
-      return null //should not really get here...
+      return null 
   }
 }
 
@@ -172,14 +171,24 @@ const drawElement = (roughCanvas, context, element) => {
           break
         case 'pencil':
           const stroke = getSvgPathFromStroke(getStroke(element.points, {
-              size: 50,
+              size: 30,
+              thinning: 0.5,
+              smoothing: 0.5,
+              streamline: 0.5,
+              easing: (t) => t,
+              start: {
+                taper: 0,
+                easing: (t) => t,
+                cap: true
+              },
+              end: {
+                taper: 100,
+                easing: (t) => t,
+                cap: true
+              }
+
           }))
           context.fill(new Path2D(stroke))
-          break
-        case 'text':
-          context.textBaseline = 'top'
-          context.font = '24px sans-serif'
-          context.fillText(element.text, element.x1, element.y1)
           break
         default:
           throw new Error(`Type not recognised: ${element.type}`)
@@ -202,11 +211,6 @@ function Paint() {
         context.clearRect(0, 0, canvas.width, canvas.height)
 
         const roughCanvas = rough.canvas(canvas)
-
-        // const rect = generator.rectangle(10, 10, 100, 100)
-        // const line = generator.line(10, 10, 110, 110)
-        // roughCanvas.draw(rect)
-        // roughCanvas.draw(line)
 
         elements.forEach(element => drawElement(roughCanvas, context, element))
 
@@ -375,7 +379,7 @@ function Paint() {
                     checked={tool === 'pencil'}
                     onChange={() => setTool('pencil')}
                 />
-                <label htmlFor='pencil'>Freehand</label>
+                <label htmlFor='pencil'>Calligraphy</label>
             </div>
             <div className='undo-btn'style={{ position: 'fixed', bottom: 0, padding: 18}}>
                 <button onClick={undo}>Undo</button>

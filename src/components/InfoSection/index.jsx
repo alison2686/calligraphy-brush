@@ -14,7 +14,8 @@ import {
     ImgWrap,
     Img
 } from './InfoElements'
-// import ImgPlane from '../../images/svg-1.svg'
+import {useNavigate} from 'react-router-dom';
+import ArtistImg from '../../images/artist.svg'
 
 
 const InfoSection = ({
@@ -32,6 +33,14 @@ const InfoSection = ({
     primary, 
     dark, 
     dark2}) => {
+
+        let navigate = useNavigate();
+
+        function handleClick() {
+            navigate('/paint')
+        }
+     
+
     return (
         <div>
             <InfoContainer lightBg={lightBg} id={id}>
@@ -44,7 +53,7 @@ const InfoSection = ({
                             <Subtitle darkText={darkText}>{description}</Subtitle>
                             <BtnWrap>
                                 <Button 
-                                    to='home' 
+                                    onClick={handleClick}
                                     smoothe={true}
                                     duration={500}
                                     spy={true}
@@ -59,8 +68,7 @@ const InfoSection = ({
                         </Column1>
                         <Column2>
                             <ImgWrap>
-                            <Img src={img} alt={alt} />
-                            {/* <ImageOne /> */}
+                            <Img src={ArtistImg} alt={alt} />
                             </ImgWrap>
                         </Column2>
                     </InfoRow>
