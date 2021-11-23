@@ -1,13 +1,12 @@
 import React from 'react'
 // import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
-// import InfoSection from '../components/InfoSection'
-// import { 
-//     homeObjOne,
-//     homeObjTwo,
-//     homeObjThree,
-//     homeObjFour
-// } from '../components/InfoSection/Data'
+import InfoSection from '../components/InfoSection'
+import { 
+    homeObjOne,
+    homeObjTwo,
+} from '../components/InfoSection/Data'
+import Bio from '../components/Bio'
 // import Navbar from '../components/Navbar'
 // import Sidebar from '../components/Sidebar'
 // import Services from '../components/TravelServices'
@@ -24,12 +23,10 @@ const Home = () => {
             {/* <Sidebar isOpen={isOpen} toggle={toggle} />
             <Navbar toggle={toggle}/> */}
             <HeroSection />
-            {/* <InfoSection {...homeObjOne} />
+            <InfoSection {...homeObjOne} />
             <InfoSection {...homeObjTwo} />
-            <Services />
-            <InfoSection {...homeObjThree} />
-            <InfoSection {...homeObjFour} />
-            <Footer /> */}
+            <Bio />
+            {/* <Footer /> */}
         </React.Fragment>
     )
 }
