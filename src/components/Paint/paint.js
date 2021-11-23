@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { useEffect } from 'react/cjs/react.development'
+// import { useEffect } from 'react/cjs/react.development'
 import rough from 'roughjs/bundled/rough.esm'
 // import ColorPicker from '../ColorPicker/ColorPicker'
 import getStroke from 'perfect-freehand'
@@ -212,22 +212,22 @@ function Paint() {
 
     }, [elements])
 
-    useEffect(() => {
-        const undoRedoFunction = event => {
-          if ((event.metaKey || event.ctrlKey) && event.key === 'z') {
-            if (event.shiftKey) {
-              redo()
-            } else {
-              undo()
-            }
-          }
-        }
+    // useEffect(() => {
+    //     const undoRedoFunction = event => {
+    //       if ((event.metaKey || event.ctrlKey) && event.key === 'z') {
+    //         if (event.shiftKey) {
+    //           redo()
+    //         } else {
+    //           undo()
+    //         }
+    //       }
+    //     }
     
-        document.addEventListener('keydown', undoRedoFunction)
-        return () => {
-          document.removeEventListener('keydown', undoRedoFunction)
-        }
-      }, [undo, redo])
+    //     document.addEventListener('keydown', undoRedoFunction)
+    //     return () => {
+    //       document.removeEventListener('keydown', undoRedoFunction)
+    //     }
+    //   }, [undo, redo])
 
   const updateElement = (id, x1, y1, x2, y2, type, options) => {
     const elementsCopy = [...elements]
