@@ -3,6 +3,13 @@ import React, { useLayoutEffect, useState } from 'react'
 import rough from 'roughjs/bundled/rough.esm'
 // import ColorPicker from '../ColorPicker/ColorPicker'
 import getStroke from 'perfect-freehand'
+import { 
+  PaintBtnWrapper, 
+  PaintContainer,
+  PaintTools,
+  UndoRedoBtn
+} from './PaintElements'
+
 
 const generator = rough.generator()
 
@@ -350,8 +357,8 @@ function Paint() {
     }
     
     return (
-        <div>
-            <div style={{ position: 'fixed'}}>
+        <PaintContainer id='paint-container'>
+            <PaintTools>
                 <input 
                     type='radio'
                     id='selection'
@@ -380,11 +387,30 @@ function Paint() {
                     onChange={() => setTool('pencil')}
                 />
                 <label htmlFor='pencil'>Calligraphy</label>
-            </div>
-            <div className='undo-btn'style={{ position: 'fixed', bottom: 0, padding: 18}}>
-                <button onClick={undo}>Undo</button>
-                <button onClick={redo}>Redo</button>
-            </div>
+              </PaintTools>
+              <PaintBtnWrapper>
+                  <UndoRedoBtn
+                  onClick={undo}
+                  smooth={true} 
+                  duration={500} 
+                  spy={true} 
+                  exact='true' 
+                  // offset={-80}
+                  >
+                    Undo
+                  </UndoRedoBtn>
+                  <br />
+                  <UndoRedoBtn 
+                    onClick={redo}
+                    smooth={true} 
+                    duration={500} 
+                    spy={true} 
+                    // exact='true' 
+                    // offset={-80}
+                  >
+                    Redo
+                  </UndoRedoBtn>
+              </PaintBtnWrapper>
             {/* <div className='color-picker' style={{ position: 'fixed', top: 0, padding: 50}}>
                 <ColorPicker />
             </div> */}
@@ -397,7 +423,7 @@ function Paint() {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
             />
-        </div>
+        </PaintContainer>
     )
 }
 
