@@ -6,9 +6,16 @@ import getStroke from 'perfect-freehand'
 import { 
   PaintBtnWrapper, 
   PaintContainer,
+  PaintToolWrapper,
   PaintTools,
+  PaintH1,
+  PaintH2,
+  PaintToolInput,
+  PaintToolLabel,
   UndoRedoBtn
 } from './PaintElements'
+import { faPaintBrush } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const generator = rough.generator()
@@ -358,36 +365,65 @@ function Paint() {
     
     return (
         <PaintContainer id='paint-container'>
+          <PaintH1>Calligraphy Brush</PaintH1>
+            <canvas 
+                id='canvas'
+                // style={{ backgroundColor: 'blue'}}
+                width={window.innerWidth}
+                height={window.innerHeight}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+            />
+            <PaintToolWrapper>
             <PaintTools>
+              <PaintH2>Paint Tools</PaintH2>
+              <PaintToolInput>
                 <input 
                     type='radio'
                     id='selection'
                     checked={tool === 'selection'}
                     onChange={() => setTool('selection')}
                 />
-                <lable htmlFor='selection'>Select</lable>
+                </PaintToolInput>
+                <PaintToolLabel>
+                <label htmlFor='selection'>Select</label>
+                </PaintToolLabel>
+                <PaintToolInput>
                 <input 
                     type='radio'
                     id='line'
                     checked={tool === 'line'}
                     onChange={() => setTool('line')}
                 />
-                <lable htmlFor='line'>Line</lable>
+                </PaintToolInput>
+                <PaintToolLabel>
+                <label htmlFor='line'>Line</label>
+                </PaintToolLabel>
+                <PaintToolInput>
                 <input 
                     type='radio'
                     id='rectangle'
                     checked={tool === 'rectangle'}
                     onChange={() => setTool('rectangle')}
                 />
+                </PaintToolInput>
+                <PaintToolLabel>
                 <label htmlFor='rectangle'>Rectangle</label>
+                </PaintToolLabel>
+                <PaintToolInput>
                 <input 
                     type='radio'
                     id='pencil'
                     checked={tool === 'pencil'}
                     onChange={() => setTool('pencil')}
                 />
-                <label htmlFor='pencil'>Calligraphy</label>
+                </PaintToolInput>
+                <PaintToolLabel>
+                <label htmlFor='pencil'>Calligraphy <FontAwesomeIcon icon={faPaintBrush} /> <br /> Press and Hold Mouse to Use Ink Brush </label>
+                </PaintToolLabel>
               </PaintTools>
+              </PaintToolWrapper>
               <PaintBtnWrapper>
                   <UndoRedoBtn
                   onClick={undo}
@@ -414,15 +450,7 @@ function Paint() {
             {/* <div className='color-picker' style={{ position: 'fixed', top: 0, padding: 50}}>
                 <ColorPicker />
             </div> */}
-            <canvas 
-                id='canvas'
-                // style={{ backgroundColor: 'blue'}}
-                width={window.innerWidth}
-                height={window.innerHeight}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-            />
+
         </PaintContainer>
     )
 }

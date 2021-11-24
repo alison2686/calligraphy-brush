@@ -4,14 +4,44 @@ import styled from 'styled-components';
 export const PaintContainer = styled.div`
     position: fixed;
     padding: 30px;
+    border: 1px solid black;
+`;
+
+export const PaintToolWrapper = styled.div`
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 200px;
 `;
 
 export const PaintTools = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     width: 10%;
     padding: 20px;
+`;
+
+export const PaintH1 = styled.div`
+    font-size: 35px;
+    padding: 10px;
+    text-align: center;
+`;
+
+export const PaintH2 = styled.div`
+    font-size: 25px;
+    padding: 10px;
+`;
+
+export const PaintToolInput = styled.div`
+    --webkit-appearance: none;
+`;
+
+export const PaintToolLabel = styled.div`
+    height: 180px;
+    width: 240px;
+    border: 2px solid #18f98d;
+    position: relative;
+    margin: auto;
+    border-radius: 10px;
 `;
 
 export const PaintBtnWrapper = styled.div`
