@@ -74,13 +74,11 @@ export const BioH1 = styled.h1`
 export const BioH2 = styled.h2`
     font-size: 1rem;
     margin-bottom: 10px;
-    /* text-transform: uppercase; */
 `
 
 export const BioH3 = styled.h2`
     font-size: 0.8rem;
     margin-bottom: 10px;
-    /* text-transform: uppercase; */
 `
 
 export const BioP = styled.p`

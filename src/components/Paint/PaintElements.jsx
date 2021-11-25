@@ -7,6 +7,10 @@ export const PaintContainer = styled.div`
     border: 1px solid black;
 `;
 
+export const PaintCanvasWrapper = styled.div`
+    border: 3px solid black;
+`;
+
 export const PaintToolWrapper = styled.div`
     position: fixed;
     bottom: 0;
@@ -31,17 +35,42 @@ export const PaintH2 = styled.div`
     padding: 10px;
 `;
 
+export const PaintP = styled.div`
+    font-size: 12px;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+`;
+
 export const PaintToolInput = styled.div`
     --webkit-appearance: none;
 `;
 
 export const PaintToolLabel = styled.div`
-    height: 180px;
-    width: 240px;
+    height: 160px;
+    width: 200px;
     border: 2px solid #18f98d;
     position: relative;
     margin: auto;
     border-radius: 10px;
+`;
+
+export const PaintSpan = styled.div`
+    font-size: 15px;
+    font-weight: 700;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    transform: translate(-50%, -80%);
+`
+
+export const PaintIcon = styled.div`
+    font-size: 60px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -80%);
 `;
 
 export const PaintBtnWrapper = styled.div`

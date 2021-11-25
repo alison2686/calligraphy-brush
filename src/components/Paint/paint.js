@@ -5,16 +5,20 @@ import rough from 'roughjs/bundled/rough.esm'
 import getStroke from 'perfect-freehand'
 import { 
   PaintBtnWrapper, 
+  PaintCanvasWrapper,
   PaintContainer,
   PaintToolWrapper,
   PaintTools,
   PaintH1,
   PaintH2,
+  PaintP,
   PaintToolInput,
   PaintToolLabel,
+  PaintSpan,
+  PaintIcon,
   UndoRedoBtn
 } from './PaintElements'
-import { faPaintBrush } from "@fortawesome/free-solid-svg-icons";
+import { faPaintBrush, faSquare, faMousePointer, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -69,7 +73,7 @@ const positionWithinElement = (x, y, element) => {
         const betweenAnyPoint = element.points.some((point, index) => {
           const nextPoint = element.points[index + 1]
           if (!nextPoint) return false
-          return onLine(point.x, point.y, nextPoint.x, nextPoint.y, x, y, 5) != null
+          return onLine(point.x, point.y, nextPoint.x, nextPoint.y, x, y, 25) != null
         })
         return betweenAnyPoint ? 'inside' : null
       case 'text':
@@ -365,7 +369,8 @@ function Paint() {
     
     return (
         <PaintContainer id='paint-container'>
-          <PaintH1>Calligraphy Brush</PaintH1>
+            <PaintH1>Calligraphy Brush</PaintH1>
+          <PaintCanvasWrapper>
             <canvas 
                 id='canvas'
                 // style={{ backgroundColor: 'blue'}}
@@ -375,54 +380,86 @@ function Paint() {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
             />
+            </PaintCanvasWrapper>
             <PaintToolWrapper>
-            <PaintTools>
-              <PaintH2>Paint Tools</PaintH2>
-              <PaintToolInput>
-                <input 
-                    type='radio'
-                    id='selection'
-                    checked={tool === 'selection'}
-                    onChange={() => setTool('selection')}
-                />
-                </PaintToolInput>
-                <PaintToolLabel>
-                <label htmlFor='selection'>Select</label>
-                </PaintToolLabel>
-                <PaintToolInput>
-                <input 
-                    type='radio'
-                    id='line'
-                    checked={tool === 'line'}
-                    onChange={() => setTool('line')}
-                />
-                </PaintToolInput>
-                <PaintToolLabel>
-                <label htmlFor='line'>Line</label>
-                </PaintToolLabel>
-                <PaintToolInput>
-                <input 
-                    type='radio'
-                    id='rectangle'
-                    checked={tool === 'rectangle'}
-                    onChange={() => setTool('rectangle')}
-                />
-                </PaintToolInput>
-                <PaintToolLabel>
-                <label htmlFor='rectangle'>Rectangle</label>
-                </PaintToolLabel>
-                <PaintToolInput>
-                <input 
-                    type='radio'
-                    id='pencil'
-                    checked={tool === 'pencil'}
-                    onChange={() => setTool('pencil')}
-                />
-                </PaintToolInput>
-                <PaintToolLabel>
-                <label htmlFor='pencil'>Calligraphy <FontAwesomeIcon icon={faPaintBrush} /> <br /> Press and Hold Mouse to Use Ink Brush </label>
-                </PaintToolLabel>
-              </PaintTools>
+              <PaintTools>
+                <PaintH2>Paint Tools</PaintH2>
+                  <PaintToolInput>
+                  <input 
+                      type='radio'
+                      id='pencil'
+                      checked={tool === 'pencil'}
+                      onChange={() => setTool('pencil')}
+                  />
+                  </PaintToolInput>
+                    <PaintToolLabel>
+                    <label htmlFor='pencil'>
+                      <PaintIcon>
+                        <FontAwesomeIcon icon={faPaintBrush} />
+                      </PaintIcon>
+                    </label>
+                    <PaintSpan>
+                      Calligraphy Tool
+                    </PaintSpan>
+                    <PaintP>
+                      Hold Mouse to Use Ink Brush 
+                    </PaintP>
+                    </PaintToolLabel>
+                  <PaintToolInput>
+                  <input 
+                      type='radio'
+                      id='line'
+                      checked={tool === 'line'}
+                      onChange={() => setTool('line')}
+                  />
+                  </PaintToolInput>
+                  <PaintToolLabel>
+                  <label htmlFor='line'>
+                  <PaintIcon>
+                      <FontAwesomeIcon icon={faPencilAlt} />
+                    </PaintIcon>
+                  </label>
+                    <PaintSpan>
+                        Line
+                      </PaintSpan>
+                  </PaintToolLabel>
+                  <PaintToolInput>
+                  <input 
+                      type='radio'
+                      id='rectangle'
+                      checked={tool === 'rectangle'}
+                      onChange={() => setTool('rectangle')}
+                  />
+                  </PaintToolInput>
+                  <PaintToolLabel>
+                  <label htmlFor='rectangle'>
+                  <PaintIcon>
+                      <FontAwesomeIcon icon={faSquare} />
+                    </PaintIcon>
+                  </label>
+                      <PaintSpan>
+                        Rectangle
+                      </PaintSpan>
+                  </PaintToolLabel>
+                  <PaintToolInput>
+                  <input 
+                      type='radio'
+                      id='selection'
+                      checked={tool === 'selection'}
+                      onChange={() => setTool('selection')}
+                  />
+                  </PaintToolInput>
+                  <PaintToolLabel>
+                  <label htmlFor='selection'>
+                  <PaintIcon>
+                      <FontAwesomeIcon icon={faMousePointer} />
+                    </PaintIcon>
+                  </label>
+                    <PaintSpan>
+                      Select
+                    </PaintSpan>
+                  </PaintToolLabel>
+                </PaintTools>
               </PaintToolWrapper>
               <PaintBtnWrapper>
                   <UndoRedoBtn
