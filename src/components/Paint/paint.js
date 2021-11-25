@@ -8,6 +8,7 @@ import {
   PaintCanvasWrapper,
   PaintContainer,
   PaintToolWrapper,
+  PaintToolLabelWrapper,
   PaintTools,
   PaintH1,
   PaintH2,
@@ -381,84 +382,100 @@ function Paint() {
                 onMouseUp={handleMouseUp}
             />
             </PaintCanvasWrapper>
+
             <PaintToolWrapper>
               <PaintTools>
                 <PaintH2>Paint Tools</PaintH2>
-                  <PaintToolInput>
-                  <input 
-                      type='radio'
-                      id='pencil'
-                      checked={tool === 'pencil'}
-                      onChange={() => setTool('pencil')}
-                  />
-                  </PaintToolInput>
-                    <PaintToolLabel>
-                    <label htmlFor='pencil'>
-                      <PaintIcon>
-                        <FontAwesomeIcon icon={faPaintBrush} />
-                      </PaintIcon>
-                    </label>
-                    <PaintSpan>
-                      Calligraphy Tool
-                    </PaintSpan>
-                    <PaintP>
-                      Hold Mouse to Use Ink Brush 
-                    </PaintP>
-                    </PaintToolLabel>
-                  <PaintToolInput>
-                  <input 
-                      type='radio'
-                      id='line'
-                      checked={tool === 'line'}
-                      onChange={() => setTool('line')}
-                  />
-                  </PaintToolInput>
-                  <PaintToolLabel>
-                  <label htmlFor='line'>
-                  <PaintIcon>
-                      <FontAwesomeIcon icon={faPencilAlt} />
-                    </PaintIcon>
-                  </label>
-                    <PaintSpan>
-                        Line
-                      </PaintSpan>
-                  </PaintToolLabel>
-                  <PaintToolInput>
-                  <input 
-                      type='radio'
-                      id='rectangle'
-                      checked={tool === 'rectangle'}
-                      onChange={() => setTool('rectangle')}
-                  />
-                  </PaintToolInput>
-                  <PaintToolLabel>
-                  <label htmlFor='rectangle'>
-                  <PaintIcon>
-                      <FontAwesomeIcon icon={faSquare} />
-                    </PaintIcon>
-                  </label>
+                  <PaintToolLabelWrapper>
+                      <PaintToolLabel>
+                      <label htmlFor='pencil'>
+                      <PaintToolInput>
+                        <input 
+                            type='radio'
+                            id='pencil'
+                            checked={tool === 'pencil'}
+                            onChange={() => setTool('pencil')}
+                        />
+                    </PaintToolInput>
+                        <PaintIcon>
+                          <FontAwesomeIcon icon={faPaintBrush} />
+                        </PaintIcon>
+                      
                       <PaintSpan>
-                        Rectangle
+                        Calligraphy Tool
                       </PaintSpan>
-                  </PaintToolLabel>
-                  <PaintToolInput>
-                  <input 
-                      type='radio'
-                      id='selection'
-                      checked={tool === 'selection'}
-                      onChange={() => setTool('selection')}
-                  />
-                  </PaintToolInput>
-                  <PaintToolLabel>
-                  <label htmlFor='selection'>
-                  <PaintIcon>
-                      <FontAwesomeIcon icon={faMousePointer} />
-                    </PaintIcon>
-                  </label>
-                    <PaintSpan>
-                      Select
-                    </PaintSpan>
-                  </PaintToolLabel>
+                      <PaintP>
+                        Hold Mouse to Use Ink Brush 
+                      </PaintP>
+                      </label>
+                      </PaintToolLabel>
+                    </PaintToolLabelWrapper>
+
+                  <PaintToolLabelWrapper>
+                    <PaintToolLabel>
+                    <label htmlFor='line'>
+                    <PaintToolInput>
+                    <input 
+                        type='radio'
+                        id='line'
+                        checked={tool === 'line'}
+                        onChange={() => setTool('line')}
+                    />
+                    </PaintToolInput>
+                    <PaintIcon>
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                      </PaintIcon>
+                    
+                      <PaintSpan>
+                          Line
+                        </PaintSpan>
+                        </label>
+                    </PaintToolLabel>
+                  </PaintToolLabelWrapper>
+
+                  <PaintToolLabelWrapper>
+                    <PaintToolLabel>
+                    <label htmlFor='rectangle'>
+                    <PaintToolInput>
+                    <input 
+                        type='radio'
+                        id='rectangle'
+                        checked={tool === 'rectangle'}
+                        onChange={() => setTool('rectangle')}
+                    />
+                    </PaintToolInput>
+                    <PaintIcon>
+                        <FontAwesomeIcon icon={faSquare} />
+                      </PaintIcon>
+                        <PaintSpan>
+                          Rectangle
+                        </PaintSpan>
+                        </label>
+                    </PaintToolLabel>
+                  </PaintToolLabelWrapper>
+
+                  <PaintToolLabelWrapper>
+                    <PaintToolLabel>
+                    <label htmlFor='selection'>
+                    <PaintToolInput>
+                    <input 
+                        type='radio'
+                        id='selection'
+                        checked={tool === 'selection'}
+                        onChange={() => setTool('selection')}
+                    />
+                    </PaintToolInput>
+                    <PaintIcon>
+                        <FontAwesomeIcon icon={faMousePointer} />
+                      </PaintIcon>
+
+                      <PaintSpan>
+                        Select
+                      </PaintSpan>
+                      </label>
+                    </PaintToolLabel>
+                  </PaintToolLabelWrapper>
+
                 </PaintTools>
               </PaintToolWrapper>
               <PaintBtnWrapper>

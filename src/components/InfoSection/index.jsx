@@ -15,7 +15,7 @@ import {
     Img
 } from './InfoElements'
 import {useNavigate} from 'react-router-dom';
-import ArtistImg from '../../images/artist.svg'
+// import ArtistImg from '../../images/artist.svg'
 
 
 const InfoSection = ({
@@ -68,7 +68,7 @@ const InfoSection = ({
                         </Column1>
                         <Column2>
                             <ImgWrap>
-                            <Img src={ArtistImg} alt={alt} />
+                            <Img src={img} alt={alt} />
                             </ImgWrap>
                         </Column2>
                     </InfoRow>

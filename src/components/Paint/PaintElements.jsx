@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { Link } from 'react-scroll';
 
 export const PaintContainer = styled.div`
     position: fixed;
@@ -8,13 +7,17 @@ export const PaintContainer = styled.div`
 `;
 
 export const PaintCanvasWrapper = styled.div`
-    border: 3px solid black;
+    border: 3px solid #4b0082;
 `;
 
 export const PaintToolWrapper = styled.div`
     position: fixed;
     bottom: 0;
     padding-bottom: 200px;
+`;
+
+export const PaintToolLabelWrapper = styled.div`
+    padding: 5px;
 `;
 
 export const PaintTools = styled.div`
@@ -45,15 +48,26 @@ export const PaintP = styled.div`
 
 export const PaintToolInput = styled.div`
     --webkit-appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+
 `;
 
 export const PaintToolLabel = styled.div`
     height: 160px;
     width: 200px;
-    border: 2px solid #18f98d;
+    border: 4px solid #4b0082;
     position: relative;
     margin: auto;
     border-radius: 10px;
+    padding: 10px;
+
+    &:hover {
+        background-color: #4b0082;
+    }
 `;
 
 export const PaintSpan = styled.div`
