@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const PaintContainer = styled.div`
-    /* position: fixed; */
     padding: 30px;
 `;
 
@@ -11,10 +10,7 @@ export const PaintCanvasWrapper = styled.div`
 `;
 
 export const PaintToolWrapper = styled.div`
-    /* width: 100%; */
     height: 400px;
-    /* padding-bottom: 150px; */
-    /* border: 1px solid red; */
     position: fixed;
     top: 0;
     left: 0;
@@ -62,7 +58,7 @@ export const PaintToolInput = styled.div`
 
 export const PaintToolLabel = styled.div`
     height: 100px;
-    width: 120px;
+    width: 130px;
     border: 4px solid #4b0082;
     position: relative;
     margin: auto;
@@ -85,7 +81,7 @@ export const PaintSpan = styled.div`
 `
 
 export const PaintIcon = styled.div`
-    font-size: 20px;
+    font-size: 40px;
     position: absolute;
     top: 50%;
     left: 30%;
