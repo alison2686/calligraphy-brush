@@ -15,8 +15,6 @@ import {
     Img
 } from './InfoElements'
 import {useNavigate} from 'react-router-dom';
-// import ArtistImg from '../../images/artist.svg'
-
 
 const InfoSection = ({
     lightBg, 
