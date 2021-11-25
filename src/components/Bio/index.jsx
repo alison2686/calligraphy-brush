@@ -26,7 +26,7 @@ const Bio = () => {
                     <BioIcon src={Icon2}/>
                     <BioH2>Front End Developer</BioH2>
                     <BioH3>San Francisco, CA</BioH3>
-                    <BioP> Check out my GitHub Profile or Find Me on LinkedIn
+                    <BioP> Find me on Linkedin or GitHub
                     </BioP>
         
                     <SocialLinks>

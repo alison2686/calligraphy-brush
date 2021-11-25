@@ -18,10 +18,9 @@ export const BioContainer = styled.div`
 `;
 
 export const BioWrapper = styled.div`
+    width: 400px;
     max-width: 1000px;
     margin: 0 auto;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr; */
     align-items: center;
     grid-gap: 16px;
     padding: 0 50px;
@@ -86,11 +85,8 @@ export const BioP = styled.p`
     text-align: center;
 `
 export const SocialLinks = styled.div`
-    border: 1px solid red;
-    justify-content: left;
+
 `
 export const SocialIcon = styled.div`
-    border: 1px solid red;
-    font-size: 60px;
-
+    font-size: 25px;
 `
