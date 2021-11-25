@@ -21,6 +21,7 @@ import {
 } from './PaintElements'
 import { faPaintBrush, faSquare, faMousePointer, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './radio.css'
 
 
 const generator = rough.generator()
@@ -388,15 +389,7 @@ function Paint() {
                 <PaintH2>Paint Tools</PaintH2>
                   <PaintToolLabelWrapper>
                       <PaintToolLabel>
-                      <label htmlFor='pencil'>
-                      <PaintToolInput>
-                        <input 
-                            type='radio'
-                            id='pencil'
-                            checked={tool === 'pencil'}
-                            onChange={() => setTool('pencil')}
-                        />
-                    </PaintToolInput>
+                      <label htmlFor='pencil' class='radio'>
                         <PaintIcon>
                           <FontAwesomeIcon icon={faPaintBrush} />
                         </PaintIcon>
@@ -407,20 +400,32 @@ function Paint() {
                       <PaintP>
                         Hold Mouse to Use Ink Brush 
                       </PaintP>
+                      <PaintToolInput>
+                        <input 
+                            type='radio'
+                            id='pencil'
+                            class='radio__input'
+                            checked={tool === 'pencil'} 
+                            onChange={() => setTool('pencil')}
+                        />
+                        <div class='radio__radio'></div>
+                    </PaintToolInput>
                       </label>
                       </PaintToolLabel>
                     </PaintToolLabelWrapper>
 
                   <PaintToolLabelWrapper>
                     <PaintToolLabel>
-                    <label htmlFor='line'>
+                    <label htmlFor='line' class='radio'>
                     <PaintToolInput>
                     <input 
                         type='radio'
                         id='line'
+                        class='radio__input'
                         checked={tool === 'line'}
                         onChange={() => setTool('line')}
                     />
+                    <div class='radio__radio'></div>
                     </PaintToolInput>
                     <PaintIcon>
                         <FontAwesomeIcon icon={faPencilAlt} />
@@ -435,14 +440,16 @@ function Paint() {
 
                   <PaintToolLabelWrapper>
                     <PaintToolLabel>
-                    <label htmlFor='rectangle'>
+                    <label htmlFor='rectangle' class='radio'>
                     <PaintToolInput>
                     <input 
                         type='radio'
                         id='rectangle'
+                        class='radio__input'
                         checked={tool === 'rectangle'}
                         onChange={() => setTool('rectangle')}
                     />
+                    <div class='radio__radio'></div>
                     </PaintToolInput>
                     <PaintIcon>
                         <FontAwesomeIcon icon={faSquare} />
@@ -450,20 +457,22 @@ function Paint() {
                         <PaintSpan>
                           Rectangle
                         </PaintSpan>
-                        </label>
+                    </label>
                     </PaintToolLabel>
                   </PaintToolLabelWrapper>
 
                   <PaintToolLabelWrapper>
                     <PaintToolLabel>
-                    <label htmlFor='selection'>
+                    <label htmlFor='selection' class='radio'>
                     <PaintToolInput>
                     <input 
                         type='radio'
                         id='selection'
+                        class='radio__input'
                         checked={tool === 'selection'}
                         onChange={() => setTool('selection')}
                     />
+                    <div class='radio__radio'></div>
                     </PaintToolInput>
                     <PaintIcon>
                         <FontAwesomeIcon icon={faMousePointer} />

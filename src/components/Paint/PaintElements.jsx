@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const PaintContainer = styled.div`
     position: fixed;
     padding: 30px;
-    border: 1px solid black;
 `;
 
 export const PaintCanvasWrapper = styled.div`
     border: 3px solid #4b0082;
+    border-radius: 10px;
+    width: 95%;
 `;
 
 export const PaintToolWrapper = styled.div`
@@ -49,21 +50,20 @@ export const PaintP = styled.div`
 export const PaintToolInput = styled.div`
     --webkit-appearance: none;
 
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 10px;
-
+    &:checked {
+        background-color: #4b0082;
+    }
 `;
 
 export const PaintToolLabel = styled.div`
-    height: 160px;
-    width: 200px;
+    height: 140px;
+    width: 180px;
     border: 4px solid #4b0082;
     position: relative;
     margin: auto;
     border-radius: 10px;
     padding: 10px;
+    cursor: pointer;
 
     &:hover {
         background-color: #4b0082;
@@ -91,13 +91,13 @@ export const PaintBtnWrapper = styled.div`
     position: fixed;
     bottom: 0;
     padding-bottom: 5px;
+    padding-left: 15px;
 `
 export const UndoRedoBtn = styled.div`
     border-radius: 50px;
     background: ${({ primary }) => (primary ? '#01BF71' : '#010606')};
     white-space: nowrap;
     padding: 15px;
-    /* padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')}; */
     color: ${({ dark }) => (dark ? '#010606' : '#ffffff')};
     font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
     outline: none;
