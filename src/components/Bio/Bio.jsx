@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const BioContainer = styled.div`
     height: 800px;
@@ -84,4 +84,13 @@ export const BioH3 = styled.h2`
 export const BioP = styled.p`
     font-size: 1 rem;
     text-align: center;
+`
+export const SocialLinks = styled.div`
+    border: 1px solid red;
+    justify-content: left;
+`
+export const SocialIcon = styled.div`
+    border: 1px solid red;
+    font-size: 60px;
+
 `

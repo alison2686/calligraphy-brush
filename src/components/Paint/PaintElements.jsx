@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 
 export const PaintContainer = styled.div`
-    position: fixed;
+    /* position: fixed; */
     padding: 30px;
 `;
 
 export const PaintCanvasWrapper = styled.div`
     border: 3px solid #4b0082;
     border-radius: 10px;
-    width: 95%;
 `;
 
 export const PaintToolWrapper = styled.div`
+    /* width: 100%; */
+    height: 400px;
+    /* padding-bottom: 150px; */
+    /* border: 1px solid red; */
     position: fixed;
-    bottom: 0;
-    padding-bottom: 200px;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
+    padding-left: 40px;
 `;
 
 export const PaintToolLabelWrapper = styled.div`
@@ -40,8 +45,8 @@ export const PaintH2 = styled.div`
 `;
 
 export const PaintP = styled.div`
-    font-size: 12px;
-    padding: 10px;
+    font-size: 10px;
+    padding: 5px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -56,8 +61,8 @@ export const PaintToolInput = styled.div`
 `;
 
 export const PaintToolLabel = styled.div`
-    height: 140px;
-    width: 180px;
+    height: 100px;
+    width: 120px;
     border: 4px solid #4b0082;
     position: relative;
     margin: auto;
@@ -80,7 +85,7 @@ export const PaintSpan = styled.div`
 `
 
 export const PaintIcon = styled.div`
-    font-size: 60px;
+    font-size: 20px;
     position: absolute;
     top: 50%;
     left: 30%;
@@ -90,8 +95,9 @@ export const PaintIcon = styled.div`
 export const PaintBtnWrapper = styled.div`
     position: fixed;
     bottom: 0;
+    right: 0;
     padding-bottom: 5px;
-    padding-left: 15px;
+    padding-right: 40px;
 `
 export const UndoRedoBtn = styled.div`
     border-radius: 50px;

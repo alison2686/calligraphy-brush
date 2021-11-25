@@ -382,7 +382,7 @@ function Paint() {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
             />
-            </PaintCanvasWrapper>
+            
 
             <PaintToolWrapper>
               <PaintTools>
@@ -513,7 +513,7 @@ function Paint() {
             {/* <div className='color-picker' style={{ position: 'fixed', top: 0, padding: 50}}>
                 <ColorPicker />
             </div> */}
-
+        </PaintCanvasWrapper>
         </PaintContainer>
     )
 }
