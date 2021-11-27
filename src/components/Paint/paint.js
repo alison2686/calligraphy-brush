@@ -375,7 +375,6 @@ function Paint() {
           <PaintCanvasWrapper>
             <canvas 
                 id='canvas'
-                // style={{ backgroundColor: 'blue'}}
                 width={window.innerWidth}
                 height={window.innerHeight}
                 onMouseDown={handleMouseDown}

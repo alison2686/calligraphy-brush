@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const PaintContainer = styled.div`
-    padding: 30px;
+    padding: 10px;
 `;
 
 export const PaintCanvasWrapper = styled.div`
+    position: fixed;
     border: 3px solid #4b0082;
     border-radius: 10px;
+    background-color:#ece4d4;
 `;
 
 export const PaintToolWrapper = styled.div`
-    height: 400px;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    padding-top: 70px;
     padding-left: 40px;
 `;
 
@@ -57,7 +57,7 @@ export const PaintToolInput = styled.div`
 `;
 
 export const PaintToolLabel = styled.div`
-    height: 100px;
+    height: 90px;
     width: 130px;
     border: 4px solid #4b0082;
     position: relative;
@@ -68,6 +68,7 @@ export const PaintToolLabel = styled.div`
 
     &:hover {
         background-color: #4b0082;
+        opacity: 0.8;
     }
 `;
 
