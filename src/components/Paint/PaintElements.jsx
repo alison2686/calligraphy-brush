@@ -52,9 +52,10 @@ export const PaintH2 = styled.div`
 `;
 
 export const PaintP = styled.div`
-    font-size: 0.47rem;
+    font-size: 0.6rem;
+    font-weight: 700;
     text-transform: uppercase;
-    padding: 10px;
+    padding: 7px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -69,7 +70,7 @@ export const PaintToolInput = styled.div`
 `;
 
 export const PaintToolLabel = styled.div`
-    height: 90px;
+    height: 85px;
     width: 130px;
     border: 4px solid #4b0082;
     position: relative;
@@ -97,7 +98,7 @@ export const PaintIcon = styled.div`
     font-size: 40px;
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 33%;
     transform: translate(-50%, -80%);
 `;
 
@@ -110,7 +111,7 @@ export const PaintBtnWrapper = styled.div`
 `
 export const UndoRedoBtn = styled.div`
     border-radius: 50px;
-    background: ${({ primary }) => (primary ? '#01BF71' : '#010606')};
+    background: ${({ primary }) => (primary ? '#4b0082' : '#010606')};
     white-space: nowrap;
     padding: 15px;
     color: ${({ dark }) => (dark ? '#010606' : '#ffffff')};
@@ -125,6 +126,6 @@ export const UndoRedoBtn = styled.div`
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        background: ${({ primary }) => (primary ? '#ffffff' : '#01BF71')};
+        background: ${({ primary }) => (primary ? '#ffffff' : '#4b0082')};
     }
 `
