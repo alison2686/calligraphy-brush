@@ -47,6 +47,7 @@ export const PaintH1 = styled.div`
 export const PaintH2 = styled.div`
     font-size: 40px;
     padding: 10px;
+    text-align: center;
 `;
 
 export const PaintP = styled.div`

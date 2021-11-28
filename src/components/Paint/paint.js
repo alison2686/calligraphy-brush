@@ -19,8 +19,8 @@ import {
   PaintIcon,
   UndoRedoBtn
 } from './PaintElements'
-import { faPaintBrush, faSquare, faMousePointer, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaintBrush, faSquare, faMousePointer, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './radio.css'
 
 
@@ -215,9 +215,7 @@ const drawElement = (roughCanvas, context, element) => {
       }
 }
 
-const adjustmentRequired = (type) => {
-
-}
+const adjustmentRequired = type => ['line', 'rectangle'].includes(type)
 
 function Paint() {
     const [elements, setElements, undo, redo] = useHistory([])
@@ -283,7 +281,7 @@ function Paint() {
   }
 
   const handleMouseDown = event => {
-    if (action === 'writing') return
+    if (action === 'painting') return
 
     const { clientX, clientY } = event
     if (tool === 'selection') {
@@ -312,7 +310,7 @@ function Paint() {
       setElements(prevState => [...prevState, element])
       setSelectedElement(element)
 
-      setAction(tool === 'text' ? 'writing' : 'painting')
+      setAction(tool === 'text' ? 'painting' : 'painting')
     }
   }
 
@@ -371,7 +369,6 @@ function Paint() {
     
     return (
         <PaintContainer id='paint-container'>
-            <PaintH1>Calligraphy Brush</PaintH1>
           <PaintCanvasWrapper>
             <canvas 
                 id='canvas'
@@ -385,6 +382,7 @@ function Paint() {
 
             <PaintToolWrapper>
               <PaintTools>
+              <PaintH1>Calligraphy Brush</PaintH1>
                 <PaintH2>Paint Tools</PaintH2>
                   <PaintToolLabelWrapper>
                       <PaintToolLabel>
@@ -480,6 +478,9 @@ function Paint() {
                       <PaintSpan>
                         Select
                       </PaintSpan>
+                      <PaintP>
+                        Move or Resize Element
+                      </PaintP>
                       </label>
                     </PaintToolLabel>
                   </PaintToolLabelWrapper>
@@ -492,8 +493,7 @@ function Paint() {
                   smooth={true} 
                   duration={500} 
                   spy={true} 
-                  exact='true' 
-                  // offset={-80}
+
                   >
                     Undo
                   </UndoRedoBtn>
@@ -503,8 +503,6 @@ function Paint() {
                     smooth={true} 
                     duration={500} 
                     spy={true} 
-                    // exact='true' 
-                    // offset={-80}
                   >
                     Redo
                   </UndoRedoBtn>
