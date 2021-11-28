@@ -92,3 +92,14 @@ export const Img = styled.img`
     padding-right: 0;
 `
 
+export const VideoWrap = styled.div`
+    max-width: 555px;
+    height: 100%;
+`
+
+export const Video = styled.video`
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding-right: 0;
+`
+

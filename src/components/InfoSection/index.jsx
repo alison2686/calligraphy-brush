@@ -12,7 +12,9 @@ import {
     Subtitle, 
     BtnWrap,
     ImgWrap,
-    Img
+    Img,
+    VideoWrap,
+    Video
 } from './InfoElements'
 import {useNavigate} from 'react-router-dom';
 
@@ -26,7 +28,8 @@ const InfoSection = ({
     darkText, 
     description, 
     buttonLabel, 
-    img, 
+    img,
+    video, 
     alt, 
     primary, 
     dark, 
@@ -68,6 +71,9 @@ const InfoSection = ({
                             <ImgWrap>
                             <Img src={img} alt={alt} />
                             </ImgWrap>
+                            <VideoWrap>
+                            <Video autoPlay loop muted src={video} type='video4/mp4' />
+                            </VideoWrap>
                         </Column2>
                     </InfoRow>
                 </InfoWrapper>
