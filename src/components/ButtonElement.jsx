@@ -6,7 +6,7 @@ export const Button = styled(Link)`
   background: ${({ primary }) => (primary ? '#4b0082' : '#010606')};
   white-space: nowrap;
   padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
-  color: ${({ dark }) => (dark ? '#010606' : '#ffffff')};
+  color: #fff;
   font-size: 24px;
   outline: none;
   border: none;
@@ -14,6 +14,7 @@ export const Button = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
   transition: all 0.2s ease-in-out;
 
   &:hover {
