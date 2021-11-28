@@ -71,17 +71,17 @@ export const BioH1 = styled.h1`
 `;
 
 export const BioH2 = styled.h2`
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
 `
 
 export const BioH3 = styled.h2`
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 `
 
 export const BioP = styled.p`
-    font-size: 1 rem;
+    font-size: 1.2 rem;
     text-align: center;
 `
 export const SocialLinks = styled.div`

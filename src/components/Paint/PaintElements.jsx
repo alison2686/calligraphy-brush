@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
+// font-family: 'Beth Ellen', cursive;
+// font-family: 'Devonshire', cursive;
+// font-family: 'Julee', cursive;
+// font-family: 'Lakki Reddy', cursive;
+// font-family: 'Leckerli One', cursive;
+// font-family: 'Marck Script', cursive;
+// font-family: 'Meddon', cursive;
+// font-family: 'Merienda', cursive;
+
 export const PaintContainer = styled.div`
+    /* font-family: 'Marck Script', cursive; */
     padding: 10px;
 `;
 
@@ -30,19 +40,21 @@ export const PaintTools = styled.div`
 `;
 
 export const PaintH1 = styled.div`
-    font-size: 35px;
+    font-weight: 700;
+    font-size: 55px;
     padding: 10px;
     text-align: center;
 `;
 
 export const PaintH2 = styled.div`
-    font-size: 25px;
+    font-size: 35px;
     padding: 10px;
 `;
 
 export const PaintP = styled.div`
-    font-size: 10px;
-    padding: 5px;
+    font-size: 0.47rem;
+    text-transform: uppercase;
+    padding: 10px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -73,7 +85,7 @@ export const PaintToolLabel = styled.div`
 `;
 
 export const PaintSpan = styled.div`
-    font-size: 15px;
+    font-size:20px;
     font-weight: 700;
     position: absolute;
     top: 70%;
