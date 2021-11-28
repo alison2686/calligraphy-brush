@@ -10,7 +10,6 @@ import styled from 'styled-components';
 // font-family: 'Merienda', cursive;
 
 export const PaintContainer = styled.div`
-    /* font-family: 'Marck Script', cursive; */
     padding: 10px;
 `;
 
@@ -18,7 +17,7 @@ export const PaintCanvasWrapper = styled.div`
     position: fixed;
     border: 3px solid #4b0082;
     border-radius: 10px;
-    background-color:#ece4d4;
+    background-color:#f3f0ea;
 `;
 
 export const PaintToolWrapper = styled.div`
@@ -35,7 +34,6 @@ export const PaintToolLabelWrapper = styled.div`
 export const PaintTools = styled.div`
     display: flex;
     flex-direction: column;
-    width: 10%;
     padding: 20px;
 `;
 
@@ -47,7 +45,7 @@ export const PaintH1 = styled.div`
 `;
 
 export const PaintH2 = styled.div`
-    font-size: 35px;
+    font-size: 40px;
     padding: 10px;
 `;
 
@@ -81,7 +79,8 @@ export const PaintToolLabel = styled.div`
 
     &:hover {
         background-color: #4b0082;
-        opacity: 0.8;
+        opacity: 0.9;
+        color: #fff;
     }
 `;
 
@@ -95,7 +94,7 @@ export const PaintSpan = styled.div`
 `
 
 export const PaintIcon = styled.div`
-    font-size: 40px;
+    font-size: 38px;
     position: absolute;
     top: 50%;
     left: 33%;
