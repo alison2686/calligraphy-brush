@@ -191,7 +191,7 @@ const drawElement = (roughCanvas, context, element) => {
           break
         case 'brush':
           const stroke = getSvgPathFromStroke(getStroke(element.points, {
-              size: 30,
+              size: 40,
               thinning: 0.5,
               smoothing: 0.5,
               streamline: 0.5,

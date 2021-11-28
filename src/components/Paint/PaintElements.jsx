@@ -46,6 +46,7 @@ export const PaintH1 = styled.div`
 
 export const PaintH2 = styled.div`
     font-size: 40px;
+    font-weight: 700;
     padding: 10px;
     text-align: center;
 `;
@@ -70,7 +71,7 @@ export const PaintToolInput = styled.div`
 
 export const PaintToolLabel = styled.div`
     height: 85px;
-    width: 130px;
+    width: 140px;
     border: 4px solid #4b0082;
     position: relative;
     margin: auto;
