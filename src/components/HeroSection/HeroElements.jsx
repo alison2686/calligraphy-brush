@@ -34,7 +34,7 @@ export const VideoBg = styled.video`
 export const HeroContent = styled.div`
     border-radius: 15px;
     background: #000;
-    opacity: 0.8;
+    opacity: 0.9;
     z-index: 3;
     max-width: 1200px;
     position: absolute;
@@ -59,11 +59,11 @@ export const HeroH1 = styled.h1`
 `;
 
 export const HeroP = styled.p`
-    margin-top: 35px;
+    margin-top: 20px;
     color: #fff;
     font-size: 35px;
     text-align: center;
-    max-width: 600px;
+    max-width: 650px;
 
     @media screen and (max-width: 768px) {
         font-size: 24px;
@@ -76,6 +76,7 @@ export const HeroP = styled.p`
 
 export const HeroBtnWrapper = styled.div`
     margin-top: 32px;
+    padding: 15px;
     display: flex;
     align-items: center
 `;

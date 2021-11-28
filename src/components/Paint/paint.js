@@ -35,7 +35,7 @@ function createElement(id, x1, y1, x2, y2, type) {
               ? generator.line(x1, y1, x2, y2)
               : generator.rectangle(x1, y1, x2 - x1, y2 - y1)
           return { id, x1, y1, x2, y2, type, roughElement }
-        case 'pencil':
+        case 'brush':
           return { id, type, points: [{ x: x1, y: y1 }] }
         case 'text':
           return { id, type, x1, y1, x2, y2, text: '' }
@@ -71,7 +71,7 @@ const positionWithinElement = (x, y, element) => {
         const bottomRight = nearPoint(x, y, x2, y2, 'br')
         const inside = x >= x1 && x <= x2 && y >= y1 && y <= y2 ? 'inside' : null
         return topLeft || topRight || bottomLeft || bottomRight || inside
-      case 'pencil':
+      case 'brush':
         const betweenAnyPoint = element.points.some((point, index) => {
           const nextPoint = element.points[index + 1]
           if (!nextPoint) return false
@@ -189,7 +189,7 @@ const drawElement = (roughCanvas, context, element) => {
         case 'rectangle':
           roughCanvas.draw(element.roughElement)
           break
-        case 'pencil':
+        case 'brush':
           const stroke = getSvgPathFromStroke(getStroke(element.points, {
               size: 30,
               thinning: 0.5,
@@ -222,7 +222,7 @@ const adjustmentRequired = (type) => {
 function Paint() {
     const [elements, setElements, undo, redo] = useHistory([])
     const [action, setAction] = useState('none')
-    const [tool, setTool] = useState('pencil')
+    const [tool, setTool] = useState('brush')
     const [selectedElement, setSelectedElement] = useState(null)
 
     useLayoutEffect( () => {
@@ -261,7 +261,7 @@ function Paint() {
       case 'rectangle':
         elementsCopy[id] = createElement(id, x1, y1, x2, y2, type)
         break
-      case 'pencil':
+      case 'brush':
         elementsCopy[id].points = [...elementsCopy[id].points, { x: x2, y: y2 }]
         break
       case 'text':
@@ -289,7 +289,7 @@ function Paint() {
     if (tool === 'selection') {
       const element = getElementAtPosition(clientX, clientY, elements)
       if (element) {
-        if (element.type === 'pencil') {
+        if (element.type === 'brush') {
           const xOffsets = element.points.map(point => clientX - point.x)
           const yOffsets = element.points.map(point => clientY - point.y)
           setSelectedElement({ ...element, xOffsets, yOffsets })
@@ -329,7 +329,7 @@ function Paint() {
       const { x1, y1 } = elements[index]
       updateElement(index, x1, y1, clientX, clientY, tool)
     } else if (action === 'moving') {
-      if (selectedElement.type === 'pencil') {
+      if (selectedElement.type === 'brush') {
         const newPoints = selectedElement.points.map((_, index) => ({
           x: clientX - selectedElement.xOffsets[index],
           y: clientY - selectedElement.yOffsets[index],
@@ -388,7 +388,7 @@ function Paint() {
                 <PaintH2>Paint Tools</PaintH2>
                   <PaintToolLabelWrapper>
                       <PaintToolLabel>
-                      <label htmlFor='pencil' class='radio'>
+                      <label htmlFor='brush' class='radio'>
                         <PaintIcon>
                           <FontAwesomeIcon icon={faPaintBrush} />
                         </PaintIcon>
@@ -402,10 +402,10 @@ function Paint() {
                       <PaintToolInput>
                         <input 
                             type='radio'
-                            id='pencil'
+                            id='brush'
                             class='radio__input'
-                            checked={tool === 'pencil'} 
-                            onChange={() => setTool('pencil')}
+                            checked={tool === 'brush'} 
+                            onChange={() => setTool('brush')}
                         />
                         <div class='radio__radio'></div>
                     </PaintToolInput>
