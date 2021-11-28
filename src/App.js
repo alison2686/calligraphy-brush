@@ -1,5 +1,4 @@
 import React from 'react'
-// import Paint from './components/Paint/paint'
 import Home from './pages/index'
 import PaintApp from './pages/paint';
 import {

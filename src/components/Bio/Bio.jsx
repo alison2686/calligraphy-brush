@@ -85,8 +85,9 @@ export const BioP = styled.p`
     text-align: center;
 `
 export const SocialLinks = styled.div`
-
+    display: flex;
+    flex-direction: row;
 `
 export const SocialIcon = styled.div`
-    font-size: 25px;
+    font-size: 30px;
 `
