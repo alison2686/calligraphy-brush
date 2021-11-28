@@ -114,9 +114,9 @@ export const UndoRedoBtn = styled.div`
     border-radius: 50px;
     background: ${({ primary }) => (primary ? '#4b0082' : '#010606')};
     white-space: nowrap;
-    padding: 15px;
-    color: ${({ dark }) => (dark ? '#010606' : '#ffffff')};
-    font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+    padding: 20px;
+    color: #fff;
+    font-size: 20px;
     outline: none;
     border: none;
     cursor: pointer;

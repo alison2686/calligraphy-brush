@@ -490,19 +490,12 @@ function Paint() {
               <PaintBtnWrapper>
                   <UndoRedoBtn
                   onClick={undo}
-                  smooth={true} 
-                  duration={500} 
-                  spy={true} 
-
                   >
                     Undo
                   </UndoRedoBtn>
                   <br />
                   <UndoRedoBtn 
                     onClick={redo}
-                    smooth={true} 
-                    duration={500} 
-                    spy={true} 
                   >
                     Redo
                   </UndoRedoBtn>
