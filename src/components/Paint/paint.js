@@ -17,7 +17,8 @@ import {
   PaintToolLabel,
   PaintSpan,
   PaintIcon,
-  UndoRedoBtn
+  UndoRedoBtn,
+  ResetBtn
 } from './PaintElements'
 import { faPaintBrush, faSquare, faMousePointer, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -163,8 +164,9 @@ const useHistory = (initialState) => {
 
     const undo = () => index > 0 && setIndex(prevState => prevState - 1)
     const redo = () => index < history.length - 1 && setIndex(prevState => prevState + 1)
+    const reset = () => setState(initialState) 
 
-    return [history[index], setState, undo, redo]
+    return [history[index], setState, undo, redo, reset]
 }
 
 const getSvgPathFromStroke = stroke => {
@@ -218,7 +220,7 @@ const drawElement = (roughCanvas, context, element) => {
 const adjustmentRequired = type => ['line', 'rectangle'].includes(type)
 
 function Paint() {
-    const [elements, setElements, undo, redo] = useHistory([])
+    const [elements, setElements, undo, redo, reset] = useHistory([])
     const [action, setAction] = useState('none')
     const [tool, setTool] = useState('brush')
     const [selectedElement, setSelectedElement] = useState(null)
@@ -499,6 +501,12 @@ function Paint() {
                   >
                     Redo
                   </UndoRedoBtn>
+                  <br />
+                  <ResetBtn 
+                    onClick={reset}
+                  >
+                    Reset
+                  </ResetBtn>
               </PaintBtnWrapper>
             {/* <div className='color-picker' style={{ position: 'fixed', top: 0, padding: 50}}>
                 <ColorPicker />

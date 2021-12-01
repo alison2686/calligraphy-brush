@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-// font-family: 'Beth Ellen', cursive;
-// font-family: 'Devonshire', cursive;
-// font-family: 'Julee', cursive;
-// font-family: 'Lakki Reddy', cursive;
-// font-family: 'Leckerli One', cursive;
-// font-family: 'Marck Script', cursive;
-// font-family: 'Meddon', cursive;
-// font-family: 'Merienda', cursive;
-
 export const PaintContainer = styled.div`
     padding: 10px;
 `;
@@ -111,6 +102,27 @@ export const PaintBtnWrapper = styled.div`
     padding-right: 40px;
 `
 export const UndoRedoBtn = styled.div`
+    border-radius: 50px;
+    background: ${({ primary }) => (primary ? '#4b0082' : '#010606')};
+    white-space: nowrap;
+    padding: 15px;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: ${({ primary }) => (primary ? '#ffffff' : '#4b0082')};
+    }
+`
+
+export const ResetBtn = styled.div`
     border-radius: 50px;
     background: ${({ primary }) => (primary ? '#4b0082' : '#010606')};
     white-space: nowrap;
