@@ -1,10 +1,8 @@
 # Calligraphy Brush
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Link to Deployed Site
 
-https://eloquent-bohr-f25578.netlify.app/
+https://calligraphy-brush.netlify.app/
 
 ## Description
 

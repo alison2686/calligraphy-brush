@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const PaintContainer = styled.div`
     padding: 10px;
+
+    border: 1px solid red;
+    
 `;
 
 export const PaintCanvasWrapper = styled.div`
@@ -9,6 +12,14 @@ export const PaintCanvasWrapper = styled.div`
     border: 3px solid #4b0082;
     border-radius: 10px;
     background-color:#f3f0ea;
+
+    @media screen and (max-width: 768px) {
+        object-fit: contain;
+    }
+
+    @media screen and (max-width: 480px) {
+        object-fit: contain;
+    }
 `;
 
 export const PaintToolWrapper = styled.div`
