@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 export const PaintContainer = styled.div`
     padding: 10px;
-
-    border: 1px solid red;
-    
 `;
 
 export const PaintCanvasWrapper = styled.div`
